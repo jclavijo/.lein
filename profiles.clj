@@ -52,9 +52,9 @@
             ;colors
             ;;;;;;;;;;;;;;;;[venantius/ultra "0.5.2"]
             ;;;;[lein-shell "0.5.0"];in repl
-            ;;;[lein-ancient "0.6.10"]
+            ;;[lein-ancient "0.6.15"]
             [com.billpiel/sayid "0.0.17"]
-            [cider/cider-nrepl "0.21.0"]
+            [cider/cider-nrepl "0.21.1"]
             [refactor-nrepl "2.4.0"]
             ] ; no dependencies
 
@@ -62,43 +62,48 @@
   :pom-location "target/"
 
   :dependencies [[proto-repl "0.3.1"]
+                 [nrepl "0.7.0-SNAPSHOT"];for sayid
                  [io.aviso/pretty "0.1.33"]
-                 [org.clojure/clojure "1.8.0"]
+                 [org.clojure/clojure "1.10.0"]
                  [org.clojure/tools.namespace "0.2.5"]
                  [org.clojure/tools.nrepl "0.2.13"]
                  [org.clojure/tools.trace "0.7.9"]
-                 [zcaudate/lucid.mind "1.4.7"]
-                 [zcaudate/lucid.publish "1.4.7"]
-                 [zcaudate/lucid.unit "1.4.7"]
-                 [zcaudate/lucid.package "1.4.7"]
-                 [zcaudate/lucid.core.debug "1.4.7"]
-                 [zcaudate/lucid.core.inject "1.4.7"]
-                 [zcaudate/lucid.core.namespace "1.4.7"]
-                 [zcaudate/hara.test "2.8.7"]
+                 ;; [zcaudate/lucid.mind "1.4.7"]
+                 ;; [zcaudate/lucid.publish "1.4.7"]
+                 ;; [zcaudate/lucid.unit "1.4.7"]
+                 ;; ;[zcaudate/lucid.package "1.4.7"]
+                 ;; [zcaudate/lucid.core.debug "1.4.7"]
+                 ;[zcaudate/lucid.core.inject "1.4.7"]
+                 ;; [zcaudate/lucid.core.namespace "1.4.7"]
+                 ;[hara/test "3.0.2"]
                  [spieden/spyscope "0.1.7"]
                  [pjstadig/humane-test-output "0.8.2"]
+                 [hara/lib.aether "3.0.5"]
                  ]
   :injections [(require 'spyscope.core)
-               (require '[lucid.core.inject :as inject])
-               (inject/in [lucid.core.inject :refer [inject [in inject-in]]]
-                          [clojure.pprint pprint]
-                          [clojure.java.shell sh]
-                          [clojure.repl doc source dir]
-                          [hara.test :refer [[run-namespace test-namespace]]]
-                          [lucid.publish publish copy-assets]
-                          [lucid.package pull list-dependencies resolve-with-dependencies]
-                          [lucid.core.namespace run clear-aliases clear-mappings]
-                          [lucid.unit import scaffold purge missing orphaned in-order? arrange]
+               (require 'hara.lib.aether)
+               ;(require '[lucid.core.inject :as inject])
+               ;; (inject/in [lucid.core.inject :refer [inject [in inject-in]]]
+               ;;            [clojure.pprint pprint]
+               ;;            [clojure.java.shell sh]
+               ;;            [clojure.repl doc source dir]
+                          ;[hara/test :refer [[run-namespace test-namespace]]]
+                          ;[hara/lib.aether pull resolve-versions]
+                          ;[lucid.publish publish copy-assets]
+                          ;[lucid.package pull list-dependencies resolve-with-dependencies]
+                          ;[lucid.core.namespace run clear-aliases clear-mappings]
+                          ;[lucid.unit import scaffold purge missing orphaned in-order? arrange]
 
-                          clojure.core
-                          [lucid.mind .& .> .? .* .% .%> .>var .>ns]
+                          ;clojure.core
+                          ;[lucid.mind .& .> .? .* .% .%> .>var .>ns]
 
-                          clojure.core
-                          [lucid.core.debug :refer [[dbg-> *->] [dbg->> *->>]]]
+                          ;clojure.core
+                          ;[lucid.core.debug :refer [[dbg-> *->] [dbg->> *->>]]]
 
-                          clojure.core
-                          [clojure.repl dir]
-                          )
+                          ;; clojure.core
+                          ;; [clojure.repl dir]
+               ;; )
+               (require 'clojure.pprint)
                (require 'pjstadig.humane-test-output)
                (pjstadig.humane-test-output/activate!)]
 
@@ -116,50 +121,53 @@
 
  }};:user
 {:repl
- {:plugins [[cider/cider-nrepl "0.21.0"]
+ {:plugins [[cider/cider-nrepl "0.21.1"]
             [refactor-nrepl "2.4.0"]
            ;; ;[venantius/ultra "0.5.2"]
            ;; ;[lein-shell "0.5.0"]
             [com.billpiel/sayid "0.0.17"]
             [io.aviso/pretty "0.1.35"]
+            [lein-ancient "0.6.15"]
             ]
                                         ;:prep-tasks ["shell" "ls" "-a"]
   :dependencies [[proto-repl "0.3.1"]
+                 [nrepl "0.7.0-SNAPSHOT"];for sayid
                  [io.aviso/pretty "0.1.33"]
                  [org.clojure/clojure "1.8.0"]
                  [org.clojure/tools.namespace "0.2.5"]
                  [org.clojure/tools.nrepl "0.2.13"]
                  [org.clojure/tools.trace "0.7.9"]
-                 [zcaudate/lucid.mind "1.4.7"]
-                 [zcaudate/lucid.publish "1.4.7"]
-                 [zcaudate/lucid.unit "1.4.7"]
-                 [zcaudate/lucid.package "1.4.7"]
-                 [zcaudate/lucid.core.debug "1.4.7"]
-                 [zcaudate/lucid.core.inject "1.4.7"]
-                 [zcaudate/lucid.core.namespace "1.4.7"]
-                 [zcaudate/hara.test "2.8.7"]
+                 ;; [zcaudate/lucid.mind "1.4.7"]
+                 ;; [zcaudate/lucid.publish "1.4.7"]
+                 ;; [zcaudate/lucid.unit "1.4.7"]
+                 ;; [zcaudate/lucid.package "1.4.7"]
+                 ;; [zcaudate/lucid.core.debug "1.4.7"]
+                 ; [zcaudate/lucid.core.inject "1.4.7"]
+                 ;; [zcaudate/lucid.core.namespace "1.4.7"]
+                 ;; [zcaudate/hara.test "2.8.7"]
+                 [hara/lib.aether "3.0.5"]
                  [spieden/spyscope "0.1.7"]]
   :repl-options {:nrepl-middleware
-                 [cider.nrepl.middleware.apropos/wrap-apropos
-                  cider.nrepl.middleware.classpath/wrap-classpath
-                  cider.nrepl.middleware.complete/wrap-complete
-                  cider.nrepl.middleware.debug/wrap-debug
-                  cider.nrepl.middleware.format/wrap-format
-                  cider.nrepl.middleware.info/wrap-info
-                  cider.nrepl.middleware.inspect/wrap-inspect
-                  cider.nrepl.middleware.macroexpand/wrap-macroexpand
-                  cider.nrepl.middleware.ns/wrap-ns
-                  cider.nrepl.middleware.spec/wrap-spec
-                  cider.nrepl.middleware.pprint/wrap-pprint
-                  cider.nrepl.middleware.pprint/wrap-pprint-fn
-                  cider.nrepl.middleware.refresh/wrap-refresh
-                  cider.nrepl.middleware.resource/wrap-resource
-                  cider.nrepl.middleware.stacktrace/wrap-stacktrace
-                  cider.nrepl.middleware.test/wrap-test
-                  cider.nrepl.middleware.trace/wrap-trace
-                  cider.nrepl.middleware.out/wrap-out
-                  cider.nrepl.middleware.undef/wrap-undef
-                  cider.nrepl.middleware.version/wrap-version]}
+                 [cider.nrepl/wrap-apropos
+                  cider.nrepl/wrap-classpath
+                  cider.nrepl/wrap-complete
+                  cider.nrepl/wrap-debug
+                  cider.nrepl/wrap-format
+                  cider.nrepl/wrap-info
+                  cider.nrepl/wrap-inspect
+                  cider.nrepl/wrap-macroexpand
+                  cider.nrepl/wrap-ns
+                  cider.nrepl/wrap-spec
+                  cider.nrepl/wrap-pprint
+                  cider.nrepl/wrap-pprint-fn
+                  cider.nrepl/wrap-refresh
+                  cider.nrepl/wrap-resource
+                  cider.nrepl/wrap-stacktrace
+                  cider.nrepl/wrap-test
+                  cider.nrepl/wrap-trace
+                  cider.nrepl/wrap-out
+                  cider.nrepl/wrap-undef
+                  cider.nrepl/wrap-version]}
 
 
 
